@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="contactmanager">
+		<class>com.infosys.contactmanager.entity.Address</class>
+		<class>com.infosys.contactmanager.entity.Contact</class>
+		<class>com.infosys.contactmanager.entity.Label</class>
+		<class>com.infosys.contactmanager.entity.Phone</class>
+		<class>com.infosys.contactmanager.entity.Photo</class>
+	</persistence-unit>
+</persistence>
