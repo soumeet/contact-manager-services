@@ -13,4 +13,7 @@ public interface PhoneRepository extends JpaRepository<Phone, String> {
 	
 	@Query("SELECT p.phoneNumber FROM Phone p")
 	public List<String> getAllNos();
+	
+	@Query("SELECT p FROM Phone p WHERE p.contact.contactId = ?1")
+	public List<Phone> getAllNosForContact(Integer contactId);
 }

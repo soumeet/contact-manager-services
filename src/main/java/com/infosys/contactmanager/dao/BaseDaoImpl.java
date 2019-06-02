@@ -37,7 +37,7 @@ public class BaseDaoImpl implements BaseDao {
 	public List<String> getLabelsForContact(Integer contactId) {
 		System.out.println("IN " + BaseDaoImpl.class + " getLabelsForContact() contactId: " + contactId);
 		List<String> labelList = new ArrayList<>();
-		String sql = SQLQueries.GET_ALL_LABELS;
+		String sql = SQLQueries.GET_ALL_LABELS_BY_CONTACT;
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		paramMap.put("contactId", contactId);
 		try {
