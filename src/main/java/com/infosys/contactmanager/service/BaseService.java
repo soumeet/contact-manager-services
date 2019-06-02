@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-@Service
 public interface BaseService {
 
 	public List<String> getLabelList();
+	
+	public List<String> getLabelForContact(Integer contactId);
 }
