@@ -2,11 +2,6 @@ package com.infosys.contactmanager.model;
 
 import java.io.Serializable;
 
-
-/**
- * The persistent class for the address database table.
- * 
- */
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 

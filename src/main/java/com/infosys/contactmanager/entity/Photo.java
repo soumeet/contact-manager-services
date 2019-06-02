@@ -21,7 +21,8 @@ public class Photo implements Serializable {
 	private String filepath;
 
 	//bi-directional one-to-one association to Contact
-	@OneToOne(mappedBy="photo")
+	@OneToOne
+	@JoinColumn(name="photo_id", referencedColumnName="photo_id")
 	private Contact contact;
 
 	public Photo() {

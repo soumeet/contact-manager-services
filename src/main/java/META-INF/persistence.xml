@@ -3,6 +3,7 @@
 	<persistence-unit name="contactmanager">
 		<class>com.infosys.contactmanager.entity.Address</class>
 		<class>com.infosys.contactmanager.entity.Contact</class>
+		<class>com.infosys.contactmanager.entity.Email</class>
 		<class>com.infosys.contactmanager.entity.Label</class>
 		<class>com.infosys.contactmanager.entity.Phone</class>
 		<class>com.infosys.contactmanager.entity.Photo</class>

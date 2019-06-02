@@ -14,8 +14,12 @@ public class Phone implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="phone_number")
 	private String phoneNumber;
+
+	@Column(name="phone_code")
+	private String phoneCode;
 
 	@Column(name="phone_type")
 	private String phoneType;
@@ -34,6 +38,14 @@ public class Phone implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPhoneCode() {
+		return this.phoneCode;
+	}
+
+	public void setPhoneCode(String phoneCode) {
+		this.phoneCode = phoneCode;
 	}
 
 	public String getPhoneType() {

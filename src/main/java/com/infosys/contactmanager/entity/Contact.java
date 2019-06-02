@@ -19,7 +19,6 @@ public class Contact implements Serializable {
 	@Column(name="contact_id")
 	private Integer contactId;
 
-	@Column(name="company")
 	private String company;
 
 	@Column(name="first_name")
@@ -31,21 +30,36 @@ public class Contact implements Serializable {
 	@Column(name="middle_name")
 	private String middleName;
 
-	@Column(name="suffix")
 	private String suffix;
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="contact")
 	private List<Address> addresses;
 
-	//bi-directional one-to-one association to Photo
-	@OneToOne
-	@JoinColumn(name="photo_id")
-	private Photo photo;
-
 	//bi-directional many-to-one association to Phone
 	@OneToMany(mappedBy="contact")
 	private List<Phone> phones;
+
+	//bi-directional many-to-many association to Label
+	@ManyToMany
+	@JoinTable(
+		name="contact_label"
+		, joinColumns={
+			@JoinColumn(name="contact_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="label_id")
+			}
+		)
+	private List<Label> labels;
+
+	//bi-directional many-to-one association to Email
+	@OneToMany(mappedBy="contact")
+	private List<Email> emails;
+
+	//bi-directional one-to-one association to Photo
+	@OneToOne(mappedBy="contact")
+	private Photo photo;
 
 	public Contact() {
 	}
@@ -120,14 +134,6 @@ public class Contact implements Serializable {
 		return address;
 	}
 
-	public Photo getPhoto() {
-		return this.photo;
-	}
-
-	public void setPhoto(Photo photo) {
-		this.photo = photo;
-	}
-
 	public List<Phone> getPhones() {
 		return this.phones;
 	}
@@ -150,10 +156,42 @@ public class Contact implements Serializable {
 		return phone;
 	}
 
-	@Override
-    public String toString() {
-        return String.format(
-                "Contact[contact_id=%d, firstName='%s', lastName='%s']",
-                contactId, firstName, lastName);
-    }
+	public List<Label> getLabels() {
+		return this.labels;
+	}
+
+	public void setLabels(List<Label> labels) {
+		this.labels = labels;
+	}
+
+	public List<Email> getEmails() {
+		return this.emails;
+	}
+
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
+	}
+
+	public Email addEmail(Email email) {
+		getEmails().add(email);
+		email.setContact(this);
+
+		return email;
+	}
+
+	public Email removeEmail(Email email) {
+		getEmails().remove(email);
+		email.setContact(null);
+
+		return email;
+	}
+
+	public Photo getPhoto() {
+		return this.photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
 }

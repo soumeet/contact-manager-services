@@ -2,6 +2,7 @@ package com.infosys.contactmanager.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -21,6 +22,10 @@ public class Label implements Serializable {
 	@Column(name="label_name")
 	private String labelName;
 
+	//bi-directional many-to-many association to Contact
+	@ManyToMany(mappedBy="labels")
+	private List<Contact> contacts;
+
 	public Label() {
 	}
 
@@ -38,6 +43,14 @@ public class Label implements Serializable {
 
 	public void setLabelName(String labelName) {
 		this.labelName = labelName;
+	}
+
+	public List<Contact> getContacts() {
+		return this.contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
 
 }
