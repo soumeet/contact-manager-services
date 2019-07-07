@@ -1,18 +1,18 @@
-package com.infosys.contactmanager.controller;
+ package com.infosys.contactmanager.controller;
 
 import java.util.List;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infosys.contactmanager.dao.BaseDaoImpl;
 import com.infosys.contactmanager.service.BaseService;
-import com.infosys.contactmanager.service.BaseServiceImpl;
 
 @RestController
 @RequestMapping(path="/base")
@@ -20,6 +20,18 @@ public class BaseController {
 
 	@Autowired
 	BaseService baseService;
+	
+	@GetMapping(path="/test")
+	public String test() {
+		File file = new File("D:\\dev\\contact-manager-services\\target\\contactmanager-0.0.1-SNAPSHOT.jar");
+		String testData = "Test Successful!";
+		if(file.exists()) {
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+			testData = testData + "\nLast Build: " + sdf.format(file.lastModified());
+			testData = testData + "\nBuild Path: " + file.getAbsolutePath();
+		}
+		return testData;
+	}
 	
 	@GetMapping(path="/getAllLabels")
 	public List<String> getAllLabels() {
