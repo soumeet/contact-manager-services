@@ -11,4 +11,6 @@ public interface PhoneService {
 	public List<Phone> getAllNosForContact(Integer contactId);
 	
 	public Phone getPhone(String phoneNumber);
+
+	public String validatePhoneNumber(String phoneNumber);
 }

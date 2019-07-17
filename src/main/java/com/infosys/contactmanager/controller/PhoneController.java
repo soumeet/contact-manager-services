@@ -3,7 +3,6 @@ package com.infosys.contactmanager.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,4 +43,11 @@ public class PhoneController {
 		PhoneDTO phoneDTO = modelMapper.map(phone, PhoneDTO.class);
 		return phoneDTO;
 	}*/
+	
+	@GetMapping(path="/validate")
+	public String validatePhoneNumber(@RequestParam("phoneNumber") String phoneNumber) {
+		System.out.println("IN " + PhoneController.class + " validatePhoneNumber() phoneNumber: " + phoneNumber);
+		String res = phoneService.validatePhoneNumber(phoneNumber);
+		return res;
+	}
 }

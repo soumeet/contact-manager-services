@@ -15,4 +15,9 @@ public class ContactMapper {
 		ContactDTO contactDTO = modelMapper.map(contact, ContactDTO.class);
 		return contactDTO;
 	}
+	
+	public Contact convertToEntity(ContactDTO contactDTO) {
+		Contact contact = modelMapper.map(contactDTO, Contact.class);
+		return contact;
+	}
 }
